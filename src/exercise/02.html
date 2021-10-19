@@ -5,25 +5,48 @@
   <div id="root"></div>
 
   <!-- 🐨 add React and ReactDOM on the page.
-       💰 Here are script tags that'll do the job:
+       💰 Here are script tags that'll do the job: -->
   <script src="https://unpkg.com/react@17.0.0/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.development.js"></script>
-  -->
+ 
+
 
   <script type="module">
-    const rootElement = document.getElementById('root')
+    let rootElement = document.querySelector("#root");
+    // let elementProps = {
+    //   id: "content",
+    //   children: "Hello World"
+    // };
+    // let elementType = 'h1';
+    // let reactElement = React.createElement(elementType, elementProps);
+    // ReactDOM.render(reactElement, rootElement );
 
-    // You're going to re-implement this code using React!
-    // 💣 So go ahead and delete this implementation (or comment it out for now)
-    // These three lines are similar to React.createElement
-    const element = document.createElement('div')
-    element.textContent = 'Hello World' // 💰 in React, you set this with the "children" prop
-    element.className = 'container' // 💰 in React, this is also called the "className" prop
-    // This is similar to ReactDOM.render
-    rootElement.append(element)
+    
+    let spanHelloNode = React.createElement("span", {
+      children:"Hello"
+    });
 
-    // 🐨 Please re-implement the regular document.createElement code above
-    // with these React API calls
-    // 💰 The example in the markdown file should be a good hint for you.
+    let spanWorldNode = React.createElement("span", {
+      children:"World"
+    });
+
+    let containerNodeProps = {
+      className: "container",
+      children: [spanHelloNode, "  ",   spanWorldNode]
+    } 
+
+
+    let containerNode = React.createElement("div", containerNodeProps);
+    ReactDOM.render(containerNode, rootElement);
+
+    // <div class="container">
+    //   <span>Hello</span>  
+    //   <span>World</span>  
+    // </div>
+
+    // let containerDomNode = document.querySelector(".container");
+    // ReactDOM.render(spanHelloNode,containerDomNode);
+    // ReactDOM.render(spanWorldNode,containerDomNode);
+
   </script>
 </body>
